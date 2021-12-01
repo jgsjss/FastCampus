@@ -1,2 +1,5 @@
-module.exports = {}
-
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 6,
+  },
+}
