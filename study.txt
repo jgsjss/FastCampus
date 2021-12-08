@@ -191,9 +191,18 @@ function foo(){
   }
 }
 foo()
-
+ 
 이코드의 실행과정에서 closure는 총 3개가 생성됩니다.
 foo1개 bar1개 baz1개
+
+디버그 방법
+
+.vscode 디렉토리 아래에 launch.json 파일 생성
+그후  Add Configuration 선택하여 Launch via npm 선택
+그다음 package.json 파일에서 script에 debug 생성후, 디버깅할 파일경로를 node ~경로/파일명.js
+좌측 디버그 탭에서 디버깅 실행, 브레이크포인트도 설정해놓으면 된다.
+
+
 
 
 

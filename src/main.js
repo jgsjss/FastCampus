@@ -1,18 +1,23 @@
-// Formatting, Linting, Type checking
-// Formatting: Prettier
-// Linting: ESLint
-// Type checking: TypeScript
-// @ts-check
+// Prototype
 
-const http = require('http')
+class Person {
+  constructor(name){
+      this.name=name
+  }
+  greet(){
+      return `Hi, ${this.name}.`
+  }
+}
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200
-  res.end('hello')
-})
+class Student extends Person{
+  constructor(name){
+      super(name)
+  }
+  study(){
+      return `${this.name} is studying`
+  }
+}
 
-const port = 8080
-server.listen(port, () => {
-  /* eslint-disable-next-line no-console */
-  console.log(`The server is listening at port : ${port}`)
-})
+const me = new Student('Jeongho')
+console.log(me.study())
+console.log(me.greet())
