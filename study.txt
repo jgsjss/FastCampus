@@ -157,6 +157,45 @@ console.log(x)
 let과 const는 block scoping 대상이다. 
 var 변수의 특징, 재선언 가능, 재할당 가능, 생존범위는 블록 안이다.
 
+closure = function + environment 이다
+closure는 function이 하나 생길때마다 하나씩 생깁니다.
+
+function and(x){
+  return function print(y){
+    return x + 'and' + y
+  }
+}
+
+const saltAnd = and('salt')
+console.log(saltAnd('pepper')) //salt and pepper
+console.log(saltAnd('sugar'))  //salt and sugar
+
+const waterAnd = and('water')
+console.log(waterAnd('juice')) // water and juice
+and 함수로 만들어진 saltAnd의 closure는 : 
+함수: print
+ghksrud: x ->"salt"
+이다.
+
+closure는 higher-order function 을 만드는데 유용하다.
+
+saltAnd와 waterAnd 둘다 함수는 같은 print이지만, 각각 주어진 변수가 다릅니다.
+
+saltAnd는 x가 "salt", waterAndsms x가 "water"로 바인딩 되어 있습니다.
+즉, 둘은 서로 다른 closure를 형성하고 있습니다.
+
+function foo(){
+  function bar(){
+  }
+  function baz(){
+  }
+}
+foo()
+
+이코드의 실행과정에서 closure는 총 3개가 생성됩니다.
+foo1개 bar1개 baz1개
+
+
 
 node.js 서버 기본세팅
 

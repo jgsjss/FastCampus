@@ -11,8 +11,8 @@ const server = http.createServer((req, res) => {
   res.end('hello')
 })
 
-const port = 4000
+const port = 8080
 server.listen(port, () => {
   /* eslint-disable-next-line no-console */
-  console.log(`The ser ver is listening at port : ${port}`)
+  console.log(`The server is listening at port : ${port}`)
 })
