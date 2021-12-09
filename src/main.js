@@ -1,23 +1,77 @@
-// Prototype
+// @ts-check
+/* eslint-disable no-restricted-syntax */
 
-class Person {
-  constructor(name){
-      this.name=name
+/**
+ *  @typedef Person
+ *
+ *  @property {number} age
+ *  @property {string} city
+ *  @property {string | string[]} [pet]
+ * */
+
+/** @type {Person[]} */
+const people = [
+  {
+    age: 20,
+    city: '서울',
+    pet: ['cat', 'dog'],
+  },
+  {
+    age: 40,
+    city: '부산',
+  },
+  {
+    age: 31,
+    city: '대구',
+    pet: ['cat', 'dog'],
+  },
+  {
+    age: 36,
+    city: '서울',
+  },
+  {
+    age: 27,
+    city: '부산',
+    pet: 'cat',
+  },
+  {
+    age: 24,
+    city: '서울',
+    pet: 'dog',
+  },
+]
+
+/**
+ * 문제를 풀어봅시다
+ * A. 30대미만이 1명이라도 사는 모든 도시
+ * B. 각 도시별로 개와 고양이를 키우는 사람의 수
+ */
+
+function solveA() {
+  /** @type {string[]} */
+  const cities = []
+
+  for (const person of people) {
+    if (person.age < 30) {
+      if (!cities.find((city) => person.city === city)) {
+        cities.push(person.city)
+      }
+    }
   }
-  greet(){
-      return `Hi, ${this.name}.`
-  }
+  return cities
 }
 
-class Student extends Person{
-  constructor(name){
-      super(name)
-  }
-  study(){
-      return `${this.name} is studying`
-  }
+function solveAModern() {
+  const allCities = people
+    .filter((person) => person.age < 30)
+    .map((person) => person.city)
+  const set = new Set(allCities)
+  return Array.from(set)
 }
 
-const me = new Student('Jeongho')
-console.log(me.study())
-console.log(me.greet())
+console.log('solveA', solveA())
+console.log('solveAModern', solveAModern())
+
+function solveB() {}
+
+console.log('solveB', solveB())

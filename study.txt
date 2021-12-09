@@ -202,6 +202,10 @@ foo1개 bar1개 baz1개
 그다음 package.json 파일에서 script에 debug 생성후, 디버깅할 파일경로를 node ~경로/파일명.js
 좌측 디버그 탭에서 디버깅 실행, 브레이크포인트도 설정해놓으면 된다.
 
+let, const vs var -결론
+let과 const의 예측 가는ㅇ성과 유지보수성이 var보다 훨씬 뛰어나다
+가능하면 const만 쓰고, 필요한 경우에 한해 let을 쓰고, var는 절대쓰지마세요.
+
 
 
 
