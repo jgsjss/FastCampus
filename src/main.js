@@ -1,77 +1,24 @@
-// @ts-check
-/* eslint-disable no-restricted-syntax */
+//프레임워크 없이 간단한 토이프로젝트 웹 서버 만들어보기
 
 /**
- *  @typedef Person
- *
- *  @property {number} age
- *  @property {string} city
- *  @property {string | string[]} [pet]
- * */
-
-/** @type {Person[]} */
-const people = [
-  {
-    age: 20,
-    city: '서울',
-    pet: ['cat', 'dog'],
-  },
-  {
-    age: 40,
-    city: '부산',
-  },
-  {
-    age: 31,
-    city: '대구',
-    pet: ['cat', 'dog'],
-  },
-  {
-    age: 36,
-    city: '서울',
-  },
-  {
-    age: 27,
-    city: '부산',
-    pet: 'cat',
-  },
-  {
-    age: 24,
-    city: '서울',
-    pet: 'dog',
-  },
-]
-
-/**
- * 문제를 풀어봅시다
- * A. 30대미만이 1명이라도 사는 모든 도시
- * B. 각 도시별로 개와 고양이를 키우는 사람의 수
+ * 블로그 포스팅 서비스
+ *  - 로컬 파일을 데이터베이스로 활용할 예정(JSON)
+ *  - 인증 로직은 넣지않습니다.
+ *  -RESTful API를 사용합니다.()
  */
 
-function solveA() {
-  /** @type {string[]} */
-  const cities = []
+const http = require('http')
 
-  for (const person of people) {
-    if (person.age < 30) {
-      if (!cities.find((city) => person.city === city)) {
-        cities.push(person.city)
-      }
-    }
-  }
-  return cities
-}
+const server = http.createServer((res, req) => {
+  console.log(req.url)
 
-function solveAModern() {
-  const allCities = people
-    .filter((person) => person.age < 30)
-    .map((person) => person.city)
-  const set = new Set(allCities)
-  return Array.from(set)
-}
 
-console.log('solveA', solveA())
-console.log('solveAModern', solveAModern())
+  res.statusCode = 200
+  res.end('Hello!')
+})
 
-function solveB() {}
+const PORT = 4000
 
-console.log('solveB', solveB())
+server.listen(PORT, () => {
+  console.log(`The server is listening at port : ${PORT}`)
+})
